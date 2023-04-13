@@ -113,8 +113,9 @@ depth limit = 5:
 [0, 0, 2, 1, 1, 2, 0]
 [0, 2, 1, 1, 1, 2, 2]
 ```
+The above demonstrated that Minimax and ABP are essentially having the same function, therefore leads to same game results.
 
-The run time of each algorithm in different depth is illustrated below.
+However, the run time of each algorithm in different depth is illustrated below.
 
 | Depth |  Minimax  | ABP | 
 | :-- | :-- |  :-- |
