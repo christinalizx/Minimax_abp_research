@@ -31,7 +31,7 @@ While in ABP, as it is optimizing Minimax through pruning out the nodes whose va
 ![minimax_example]
 
 
-(Source [Minimax](https://en.wikipedia.org/wiki/Minimax#:~:text=Minimax%20(sometimes%20MinMax%2C%20MM%20or,to%20maximize%20the%20minimum%20gain.)))
+(Source: [Minimax](https://en.wikipedia.org/wiki/Minimax#:~:text=Minimax%20(sometimes%20MinMax%2C%20MM%20or,to%20maximize%20the%20minimum%20gain.)))
 
 
 The above illustrates how the Minimax algorithm works. The algorithm uses DFS, it starts from the bottom and evaluates the maximum and minimum values of the leaf nodes alternately until it reaches the root node.
