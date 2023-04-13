@@ -51,10 +51,15 @@ This diagram shows how the ABP algorithm works. The gray part does not need to b
 According to the time complexity analysis and the algorithm analysis, ABP shoule run faster than Minimax for the same depth, and the search results are the same as the ABP would end searching if the optimal results are found.
 
 I ran my game, for each depth, the game results are the same for each algorithm.
+
 ![result1]
+
 ![result2]
+
 ![result3]
+
 ![result4]
+
 ![result5]
 
 The score are the same for all algorithms.
@@ -120,12 +125,16 @@ The run time of each algorithm in different depth is illustrated below.
 | 5 | 1.9482190608978271 | 0.28275012969970703|
 
 As the depth becomes deeper, the runtime difference becomes more significant. The table here probably does not display this information at one glance, but it is clear when demonstrated by line charts.
+
 ![Minimax_runtime]
-Pay attention to the scale of the Y-axis.
+
 ![ABP_runtime]
+
+As can be seen from the difference between the scale of Y-axis from each diagram above, the time difference is significant.
+
 ![Comparison_runtime]
 
-This illustrates the time complexity of Minimax and ABP respectively.
+This comparison diagram further illustrates the time complexity of Minimax and ABP respectively.
 
 ## Application
 - What is the algorithm/datastructure used for?
