@@ -48,9 +48,84 @@ This diagram shows how the ABP algorithm works. The gray part does not need to b
 
 
 ## Empirical Analysis
-- What is the empirical analysis?
-- Provide specific examples / data.
+According to the time complexity analysis and the algorithm analysis, ABP shoule run faster than Minimax for the same depth, and the search results are the same as the ABP would end searching if the optimal results are found.
 
+I ran my game, for each depth, the game results are the same for each algorithm.
+![result1]
+![result2]
+![result3]
+![result4]
+![result5]
+
+The score are the same for all algorithms.
+
+```text
+depth limit = 1:
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 2, 0, 0, 0]
+[0, 0, 0, 1, 0, 0, 0]
+[0, 0, 2, 2, 2, 0, 0]
+[0, 1, 1, 1, 1, 0, 0]
+```
+
+```text
+depth limit = 2:
+[2, 2, 1, 1, 0, 1, 0]
+[1, 1, 2, 2, 0, 2, 1]
+[1, 2, 1, 1, 1, 1, 2]
+[2, 1, 2, 2, 2, 1, 1]
+[1, 2, 1, 1, 1, 2, 2]
+[2, 1, 2, 2, 2, 1, 2]
+```
+
+```text
+depth limit = 3:
+[0, 2, 2, 1, 0, 2, 0]
+[0, 1, 2, 2, 0, 2, 2]
+[0, 1, 2, 2, 0, 1, 1]
+[0, 2, 1, 1, 0, 1, 2]
+[0, 1, 2, 2, 1, 1, 1]
+[0, 2, 1, 1, 1, 2, 1]
+```
+
+```text
+depth limit = 4:
+[1, 2, 2, 2, 1, 2, 2]
+[2, 1, 1, 1, 2, 1, 1]
+[2, 2, 2, 1, 1, 1, 2]
+[1, 1, 1, 2, 2, 2, 1]
+[2, 2, 2, 1, 1, 1, 2]
+[2, 1, 1, 1, 2, 2, 1]
+```
+
+```text
+depth limit = 5: 
+[0, 0, 0, 0, 0, 0, 0]
+[0, 0, 1, 1, 0, 0, 0]
+[0, 0, 2, 2, 1, 1, 0]
+[0, 0, 1, 2, 2, 2, 0]
+[0, 0, 2, 1, 1, 2, 0]
+[0, 2, 1, 1, 1, 2, 2]
+```
+
+The run time of each algorithm in different depth is illustrated below.
+
+| Depth |  Minimax  | ABP | 
+| :-- | :-- |  :-- |
+| 1 | 0.0009229183197021484 | 0.0006542205810546875  |
+| 2| 0.0060498714447021484 | 0.0033948421478271484 |
+| 3 | 0.04245901107788086 | 0.016826868057250977 |
+| 4 | 0.28708410263061523 | 0.06319499015808105 |
+| 5 | 1.9482190608978271 | 0.28275012969970703|
+
+As the depth becomes deeper, the runtime difference becomes more significant. The table here probably does not display this information at one glance, but it is clear when demonstrated by line charts.
+![Minimax_runtime]
+Pay attention to the scale of the Y-axis.
+![ABP_runtime]
+![Comparison_runtime]
+
+This illustrates the time complexity of Minimax and ABP respectively.
 
 ## Application
 - What is the algorithm/datastructure used for?
@@ -75,3 +150,11 @@ This diagram shows how the ABP algorithm works. The gray part does not need to b
 <!-- auto references -->
 [minimax_example]: minimax_example.png
 [abp_example]: abp_example.png
+[result1]: result1.png
+[result2]: result2.png
+[result3]: result3.png
+[result4]: result4.png
+[result5]: result5.png
+[Minimax_runtime]: Minimax_runtime.png
+[ABP_runtime]: ABP_runtime.png
+[Comparison_runtime]: Comparison_runtime.png
