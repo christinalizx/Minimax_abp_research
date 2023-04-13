@@ -29,11 +29,13 @@ In Minimax, the maximizing player's goal is to select a move that maximize the f
 While in ABP, as it is optimizing Minimax through pruning out the nodes whose values fall outside of the bound alpha and beta, it should be more efficient than Minimax. However, in the worst case, where no node has been pruned out, the time complexity is the same with Minimax. But in the optimal case, each node will examine 2b-1 grandchildren to decide on its value. In the worst case, the node would examine $b^2$ grandchildren[^3]. The number of leaf node positions evaluated is about $O(b*1*b*1*...*b)$ for odd depth and $O(b*1*b*1*...*1)$ for even depth. This is because for every maximizer who plays first, all their moves has to be evaluated to find the best one, but for the minimizer, only the best move needs to be evaluated. Thereefore, in the optimal case, the time complexity of ABP is $O(b^(d/2))$. While this indicates that given the same amount of time, ABP can search twice as deep as Minimax, it does not affect the space complexity, so the space complexity of ABP is the same as Minimax, that is, $O(bm)$.
 
 ![minimax_example]
+
 (source: https://en.wikipedia.org/wiki/Minimax#:~:text=Minimax%20(sometimes%20MinMax%2C%20MM%20or,to%20maximize%20the%20minimum%20gain.))
 
 The above illustrates how the Minimax algorithm works. The algorithm uses DFS, it starts from the bottom and evaluates the maximum and minimum values of the leaf nodes alternately until it reaches the root node.
 
 ![abp_example]
+
 (source: https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning)
 
 This diagram shows how the ABP algorithm works. The gray part does not need to be evaluated, as they cannot lead to a change in the final result. 
