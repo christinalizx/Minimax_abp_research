@@ -160,7 +160,7 @@ Overall, the analysis supports the theoretical understanding of Minimax and ABP 
 
 
 <!-- auto references -->
-[minimax_example]: minimax_example.png
+[minimax_example]: minimax_example.png = 250x250
 [abp_example]: abp_example.png
 [result1]: result1.png
 [result2]: result2.png
