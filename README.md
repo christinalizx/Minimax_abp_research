@@ -137,6 +137,8 @@ As can be seen from the difference between the scale of Y-axis from each diagram
 
 This comparison diagram further illustrates the time complexity of Minimax and ABP respectively.
 
+Overall, the analysis supports the theoretical understanding of Minimax and ABP and their respective time complexities.
+
 ## Application
 - What is the algorithm/datastructure used for?
 - Provide specific examples
