@@ -216,6 +216,23 @@ Furthermore, the results show that the performance of both algorithms depends on
 
 In conclusion, ABP is an optimization of Minimax that prunes out nodes that are not useful, leading to less computational time. However, the space complexity of ABP is still the same as Minimax, and the performance of both algorithms depends on the depth of the search tree and the number of legal moves available at each point.
 
+## References
+1. Wikipedia contributors. (2021, March 28). Alpha–beta pruning. In Wikipedia, The Free Encyclopedia. Retrieved 20:30, April 12, 2023, from https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
+
+2. Russell, S. J., & Norvig, P. (2010). Artificial intelligence: A modern approach (3rd ed.). Prentice Hall.
+
+3. Temple University Department of Computer and Information Sciences. (n.d.). CIS 603: Artificial Intelligence. Retrieved April 12, 2023, from https://cis.temple.edu/~vasilis/Courses/CIS603/Lectures/l7.html
+
+4. Wikipedia contributors. (2021, March 27). Minimax. In Wikipedia, The Free Encyclopedia. Retrieved 20:30, April 12, 2023, from https://en.wikipedia.org/wiki/Minimax
+
+5. Browne, C. B., Powley, E., Whitehouse, D., Lucas, S. M., Cowling, P. I., Rohlfshagen, P., ... & Colton, S. (2012). A survey of Monte Carlo tree search methods. IEEE Transactions on Computational Intelligence and AI in games, 4(1), 1-43.
+
+6. Minimax Algorithm in Game Theory | Set 4 (Alpha-Beta Pruning), from https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-4-alpha-beta-pruning/
+
+7. Minimax Algorithm in Game Theory | Set 1 (Introduction), from https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/
+
+8. Carnegie Mellon University Fundamentals of Game AI, from https://www.cs.cmu.edu/~112/notes/student-tp-guides/GameAI.pdf
+
 
 <!-- auto references -->
 [minimax_example]: minimax_example.png
