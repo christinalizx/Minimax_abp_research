@@ -115,7 +115,7 @@ depth limit = 5:
 ```
 The above demonstrated that Minimax and ABP are essentially having the same function, therefore leads to same game results.
 
-However, the run time of each algorithm in different depth is illustrated below.
+However, the runtime of each algorithm in different depth is illustrated below.
 
 | Depth |  Minimax  | ABP | 
 | :-- | :-- |  :-- |
@@ -133,34 +133,92 @@ As the depth becomes deeper, the runtime difference becomes more significant. Th
 
 As can be seen from the difference between the scale of Y-axis from each diagram above, the time difference is significant.
 
+However, it also means that in terms of which algorithm is preferred, the number of legal moves is important, if the number of legal moves is small, then minimax can be better as it is easier to develop, and space complexity are the same for both.
+
 ![Comparison_runtime]
 
 This comparison diagram further illustrates the time complexity of Minimax and ABP respectively.
 
 Overall, the analysis supports the theoretical understanding of Minimax and ABP and their respective time complexities.
 
-## Application
-- What is the algorithm/datastructure used for?
-- Provide specific examples
-- Why is it useful / used in that field area?
-- Make sure to provide sources for your information.
 
 
-## Implementation
-- What language did you use?
-- What libraries did you use?
-- What were the challenges you faced?
-- Provide key points of the algorithm/datastructure implementation, discuss the code.
-- If you found code in another language, and then implemented in your own language that is fine - but make sure to document that.
+## Implementations
+I used Python to implement Minimax and ABP algorithms by developing a connect4 game. I started with developing the pseudocode of both. 
+
+First, the programa terminates when the depth reaches zero or the node is the end node. If it is the maximizer, the value will be set at negative infinity, and then for each leaf node, the value will equal to the larger value of the initial value and the child's current value. This is where the recursion occurs. For the minimizer, the initial value will be set to positive infinity, and the child's current value will equal to the smaller value of the initial value and the child's current value by calling the minimax function.
+
+Therefore, the pseudocode looks like:
+```text
+function minimax(node, depth, maximizer) {
+    if depth == 0 or the node is the end node:
+        return the value of the node
+    else if the player is the maximizer:
+        value = negative infinity
+        for each leaf node:
+            value = max(value, minimax(this leaf node, depth, False))
+        return value
+    else if this is the minimizer:
+        value = positive infinity
+        for each leaf node:
+            value = min(value, minimax(this leaf node, depth, True))
+        return value
+}
+```
+
+For ABP, since this algorithm is optimizing Minimax through cutting off the unreachable part through comparing the values with alpha and beta, there needs to be two more parameters.
+
+```text
+function abp(depth, alpha, beta, node, maximizer) {
+    if depth == 0 or the node is the end node:
+        return the value of the node
+    else if the player is the maximizer:
+        value = negative infinity
+        for each leaf node:
+            value = max(value, abp(child, depth − 1, alpha, beta, FALSE))
+            alpha = max(alpha, value)
+            if (value > beta):
+                break // this is where the cutoff happens
+        return value
+    else if this is the minimizer:
+        value = positive infinity
+        for each leaf node:
+            value = min(value, abp(child, depth − 1, alpha, beta, TRUE))
+            beta = min(value, beta)
+            if (value < alpha):
+                break // cutoff
+}
+```
+When I implementing these to the connect4 game program, there needs to be a few changes as they should bear the function to place the chess onto the board and calculate the score. In addition, the program does not have to caculate the player's score, but also the opponent's score. Therefore, although the function uses Minimax and ABP, there are further development changes made to serve the gaming functionality.
+
+The game is represented by the Board instance, and each player is identified as either PLAYER1 or PLAYER2. The evaluate function takes a player and a board instance as input and returns a score that represents the advantage of the player on the board. It computes the score for each 4-slot segment of the board and sums them up using a weighted scheme, where each score is multiplied by a weight depending on its length. The resulting score is the difference between the player's score and the adversary's score, where the adversary is the other player on the board.
+
+The minimax function uses recursion to evaluate all possible moves that can be made on the game board. The algorithm works by assuming that both players will play optimally, and it selects the best move based on the score returned by the evaluation function. If the current player is maximizing, the function chooses the move with the highest score, and if the current player is minimizing, the function chooses the move with the lowest score. The evaluate function is used to determine the score for each move.
+
+The alphabeta function is an optimization of the minimax algorithm, which prunes branches of the search tree that are not worth exploring. It does this by keeping track of two values alpha and beta, which represent the maximum score achievable by the maximizing player and the minimum score achievable by the minimizing player, respectively. If the algorithm determines that a branch cannot lead to a better outcome than the current best move, it prunes that branch and moves on to the next branch.
+
+The player and board parameters represent the current state of the game, and the evaluate function is used to determine the score for each move.
+
+I further developed a get_child_boards to serve the function of copying the current board, because I want the program to show every step taken, instead of displying the final board to the screen. It returns a list of tuples, where each tuple contains a column index and a new board state resulting from placing a piece in that column.
+
+To test the outcome of the algorithms, due to the limitation of time, I borrowed the GUI interface (![app.py]) from Pei Xu (peix@g.clemson.edu). As displayed above in the Emperical Analysis, the user can select Minimax AI play against Minimax AI or Minimax AI against ABP AI. The user can also choose to play against Minimax AI or ABP AI. The outcome of all shows that they all have the same results, proving that Minimax and ABP are essentially sharing the same theory. I further wrote test script in ![test.py] to work out the efficiency of each algorithm and plot the results into line charts. I used the math library to get the value for alpha and beta, which are negative and positive infinity respectively. Then I imported the time library to time the runtime of each function. At last, I used the matplotlib library to plot the line charts and save them into the local repository.
+
 
 
 ## Summary
-- Provide a summary of your findings
-- What did you learn?
+The results show that ABP outperformed Minimax in terms of runtime performance. As expected, ABP indeed pruned a lot of nodes that were not useful, thus saving some time. The line chart that shows the runtime performance of both algorithms clearly indicates that ABP is much faster than Minimax. This makes ABP a preferred choice when it comes to implementing AI for games that require a lot of computation.
+
+However, the space complexity of ABP is still the same as Minimax, meaning that it requires the same amount of memory. This can be a limitation in games that require a lot of memory to store the game state, and in cases where the tree is too large to fit in memory. For future studies, I would consider using conducting a space complexity analysis of Minimax and ABP.
+
+Additionally, the results showed that the performance of ABP and Minimax depends on the depth of the search tree. ABP performs better when the depth of the search tree is high, while Minimax performs better when the depth of the search tree is low. This can be attributed to the fact that ABP is more efficient in searching deeper trees, while Minimax is more efficient in searching shallower trees.
+
+Furthermore, the results show that the performance of both algorithms depends on the number of legal moves available at each point. ABP performs better when the number of legal moves is high, while Minimax performs better when the number of legal moves is low. This is because ABP prunes more nodes when the number of legal moves is high, leading to less computational time, while Minimax performs better when the number of legal moves is low as it explores all possible moves.
+
+In conclusion, ABP is an optimization of Minimax that prunes out nodes that are not useful, leading to less computational time. However, the space complexity of ABP is still the same as Minimax, and the performance of both algorithms depends on the depth of the search tree and the number of legal moves available at each point.
 
 
 <!-- auto references -->
-[minimax_example]: minimax_example.png = 250x250
+[minimax_example]: minimax_example.png
 [abp_example]: abp_example.png
 [result1]: result1.png
 [result2]: result2.png
@@ -170,3 +228,5 @@ Overall, the analysis supports the theoretical understanding of Minimax and ABP 
 [Minimax_runtime]: Minimax_runtime.png
 [ABP_runtime]: ABP_runtime.png
 [Comparison_runtime]: Comparison_runtime.png
+[app.py]: /utils/app.py
+[test.py]: /utils/test.py
