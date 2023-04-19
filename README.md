@@ -117,7 +117,7 @@ The above demonstrated that Minimax and ABP are essentially having the same func
 
 However, the runtime of each algorithm in different depth is illustrated below.
 
-| Depth |  Minimax  | ABP | 
+| Depth |  Minimax /s  | ABP /s | 
 | :-- | :-- |  :-- |
 | 1 | 0.0009229183197021484 | 0.0006542205810546875  |
 | 2| 0.0060498714447021484 | 0.0033948421478271484 |
